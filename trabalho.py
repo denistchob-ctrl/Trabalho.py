@@ -69,7 +69,7 @@ sns.set_palette("husl")
 df = pd.read_excel('Banco de dados.xlsx')
 df.columns = df.columns.str.strip()
 # Menu
-menu = st.sidebar.selectbox("Escolha a análise:", ["⭐Apresentação","📘 Metodologia","📈 Tabela de Frequência", "🔗 Correlação", "📊 Teste Qui-Quadrado", "📊 Gráfico de Barras", "🥧 Gráfico de Pizza"])
+menu = st.sidebar.radio("Escolha a análise:", ["⭐Apresentação","📘 Metodologia","📈 Tabela de Frequência", "🔗 Correlação", "📊 Teste Qui-Quadrado", "📊 Gráfico de Barras", "🥧 Gráfico de Pizza"])
 
 if menu == "⭐Apresentação":
     col1, col2 = st.columns([1,5])
@@ -314,7 +314,7 @@ elif menu == "📊 Gráfico de Barras":
         fig, ax = plt.subplots(figsize=(10, 6))
         colors = plt.cm.Set3(range(len(counts)))
         counts.plot(kind='bar', ax=ax, color=colors, edgecolor='black', linewidth=1.2)
-        ax.set_title(f'Gráfico de Barras de {selected_col}', fontsize=14, fontweight='bold')
+        #ax.set_title(f'Gráfico de Barras de {selected_col}', fontsize=14, fontweight='bold')
         ax.set_xlabel(selected_col, fontsize=12)
         ax.set_ylabel('Frequência', fontsize=12)
         plt.xticks(rotation=45, ha='right')
@@ -332,7 +332,7 @@ elif menu == "🥧 Gráfico de Pizza":
         fig, ax = plt.subplots(figsize=(10, 8))
         colors = plt.cm.Set3(range(len(counts)))
         ax.pie(counts, labels=counts.index, autopct='%1.1f%%', startangle=90, colors=colors, textprops={'fontsize': 10, 'weight': 'bold'})
-        ax.set_title(f'Gráfico de Pizza de {selected_col}', fontsize=14, fontweight='bold')
+        #ax.set_title(f'Gráfico de Pizza de {selected_col}', fontsize=14, fontweight='bold')
         ax.axis('equal')
         st.pyplot(fig)
     else:
